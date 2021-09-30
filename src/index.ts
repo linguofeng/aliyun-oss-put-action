@@ -13,7 +13,7 @@ async function main() {
     endpoint: getInput("endpoint"),
   });
 
-  console.log(await store.listBuckets(null));
+  console.log(await store.listBuckets({}));
 
   const files = await globby("**/*", { cwd: folder });
 
