@@ -1,0 +1,13 @@
+on: [push]
+
+jobs:
+  put:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ./
+        with:
+          access-key-id: ${{ secrets.ACCESS_KEY_ID }}
+          access-key-secret: ${{ secrets.ACCESS_KEY_SECRET }}
+          bucket: lusun-web
+          endpoint: oss-cn-beijing.aliyuncs.com

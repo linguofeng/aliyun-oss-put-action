@@ -1,0 +1,23 @@
+{
+  "name": "aliyun-oss-put-action",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "repository": "git@github.com:linguofeng/aliyun-oss-put-action.git",
+  "author": "linguofeng <linguofeng@msn.com>",
+  "license": "MIT",
+  "scripts": {
+    "build": "ncc build src/index.ts"
+  },
+  "dependencies": {
+    "@actions/core": "^1.5.0",
+    "@actions/github": "^5.0.0",
+    "ali-oss": "^6.16.0",
+    "globby": "^10.0.0"
+  },
+  "devDependencies": {
+    "@types/ali-oss": "^6.0.11",
+    "@types/node": "^16.10.2",
+    "@vercel/ncc": "^0.31.1",
+    "typescript": "^4.4.3"
+  }
+}

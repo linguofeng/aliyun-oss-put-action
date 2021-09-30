@@ -1,0 +1,27 @@
+name: 'aliyun-oss-put-action'
+description: 'Put files to Aliyun OSS'
+author: 'linguofeng <linguofeng@msn.com>'
+runs:
+  using: 'node12'
+  main: 'dist/index.js'
+branding:
+  icon: 'git-commit'
+  color: 'orange'
+inputs:
+  access-key-id:
+    description: 'accessKeyId'
+    required: true
+  access-key-secret:
+    description: 'accessKeySecret'
+    required: true
+  bucket:
+    description: 'bucket'
+    required: true
+  endpoint:
+    description: 'endpoint'
+    required: true
+  folder:
+    description: 'folder'
+    required: false
+    default: 'dist'
+
