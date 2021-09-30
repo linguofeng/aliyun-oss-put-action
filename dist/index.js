@@ -78861,12 +78861,14 @@ var __webpack_exports__ = {};
 (() => {
 "use strict";
 __nccwpck_require__.r(__webpack_exports__);
-/* harmony import */ var ali_oss__WEBPACK_IMPORTED_MODULE_0__ = __nccwpck_require__(92399);
-/* harmony import */ var ali_oss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__nccwpck_require__.n(ali_oss__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var globby__WEBPACK_IMPORTED_MODULE_1__ = __nccwpck_require__(43398);
-/* harmony import */ var globby__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__nccwpck_require__.n(globby__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _actions_core__WEBPACK_IMPORTED_MODULE_2__ = __nccwpck_require__(42186);
-/* harmony import */ var _actions_core__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__nccwpck_require__.n(_actions_core__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var path__WEBPACK_IMPORTED_MODULE_0__ = __nccwpck_require__(85622);
+/* harmony import */ var path__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__nccwpck_require__.n(path__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var ali_oss__WEBPACK_IMPORTED_MODULE_1__ = __nccwpck_require__(92399);
+/* harmony import */ var ali_oss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__nccwpck_require__.n(ali_oss__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var globby__WEBPACK_IMPORTED_MODULE_2__ = __nccwpck_require__(43398);
+/* harmony import */ var globby__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__nccwpck_require__.n(globby__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _actions_core__WEBPACK_IMPORTED_MODULE_3__ = __nccwpck_require__(42186);
+/* harmony import */ var _actions_core__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__nccwpck_require__.n(_actions_core__WEBPACK_IMPORTED_MODULE_3__);
 var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -78879,20 +78881,21 @@ var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _argume
 
 
 
+
 function main() {
     return __awaiter(this, void 0, void 0, function* () {
-        const folder = (0,_actions_core__WEBPACK_IMPORTED_MODULE_2__.getInput)("folder");
-        const store = new (ali_oss__WEBPACK_IMPORTED_MODULE_0___default())({
-            accessKeyId: (0,_actions_core__WEBPACK_IMPORTED_MODULE_2__.getInput)("access-key-id"),
-            accessKeySecret: (0,_actions_core__WEBPACK_IMPORTED_MODULE_2__.getInput)("access-key-secret"),
-            bucket: (0,_actions_core__WEBPACK_IMPORTED_MODULE_2__.getInput)("bucket"),
-            endpoint: (0,_actions_core__WEBPACK_IMPORTED_MODULE_2__.getInput)("endpoint"),
+        const folder = (0,_actions_core__WEBPACK_IMPORTED_MODULE_3__.getInput)("folder");
+        const store = new (ali_oss__WEBPACK_IMPORTED_MODULE_1___default())({
+            accessKeyId: (0,_actions_core__WEBPACK_IMPORTED_MODULE_3__.getInput)("access-key-id"),
+            accessKeySecret: (0,_actions_core__WEBPACK_IMPORTED_MODULE_3__.getInput)("access-key-secret"),
+            bucket: (0,_actions_core__WEBPACK_IMPORTED_MODULE_3__.getInput)("bucket"),
+            endpoint: (0,_actions_core__WEBPACK_IMPORTED_MODULE_3__.getInput)("endpoint"),
         });
-        console.log(yield store.listBuckets({}));
-        const files = yield globby__WEBPACK_IMPORTED_MODULE_1___default()("**/*", { cwd: folder });
+        const files = yield globby__WEBPACK_IMPORTED_MODULE_2___default()("**/*", { cwd: folder });
         console.log(files);
-        console.log(process.env);
-        // await Promise.all(files.map((file) => store.put(file, join(folder, file))));
+        if (process.env.SKIP_PUT !== "true") {
+            yield Promise.all(files.map((file) => store.put(file, (0,path__WEBPACK_IMPORTED_MODULE_0__.join)(folder, file))));
+        }
         console.log("done");
     });
 }

@@ -13,15 +13,13 @@ async function main() {
     endpoint: getInput("endpoint"),
   });
 
-  console.log(await store.listBuckets({}));
-
   const files = await globby("**/*", { cwd: folder });
 
   console.log(files);
 
-  console.log(process.env);
-  
-  // await Promise.all(files.map((file) => store.put(file, join(folder, file))));
+  if (process.env.SKIP_PUT !== "true") {
+    await Promise.all(files.map((file) => store.put(file, join(folder, file))));
+  }
 
   console.log("done");
 }
