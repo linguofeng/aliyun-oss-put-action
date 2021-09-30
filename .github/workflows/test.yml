@@ -3,6 +3,8 @@ on: [push]
 jobs:
   put:
     runs-on: ubuntu-latest
+    env:
+      SKIP_PUT: true
     steps:
       - uses: actions/checkout@v2
       - uses: ./
