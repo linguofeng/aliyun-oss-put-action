@@ -82099,7 +82099,7 @@ function main() {
             bucket: (0,_actions_core__WEBPACK_IMPORTED_MODULE_2__.getInput)("bucket"),
             endpoint: (0,_actions_core__WEBPACK_IMPORTED_MODULE_2__.getInput)("endpoint"),
         });
-        console.log(yield store.listBuckets(null));
+        console.log(yield store.listBuckets({}));
         const files = yield globby__WEBPACK_IMPORTED_MODULE_1___default()("**/*", { cwd: folder });
         console.log(files);
         // await Promise.all(files.map((file) => store.put(file, join(folder, file))));
