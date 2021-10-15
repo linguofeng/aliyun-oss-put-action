@@ -20,8 +20,15 @@ inputs:
   endpoint:
     description: 'endpoint'
     required: true
+  prefix:
+    description: 'prefix'
+    required: false
+    default: ''
   folder:
     description: 'folder'
     required: false
     default: 'dist'
-
+  patterns:
+    description: 'patterns'
+    required: false
+    default: '*/**'

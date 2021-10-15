@@ -78884,6 +78884,7 @@ var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _argume
 
 function main() {
     return __awaiter(this, void 0, void 0, function* () {
+        const prefix = (0,_actions_core__WEBPACK_IMPORTED_MODULE_3__.getInput)("prefix");
         const folder = (0,_actions_core__WEBPACK_IMPORTED_MODULE_3__.getInput)("folder");
         const store = new (ali_oss__WEBPACK_IMPORTED_MODULE_1___default())({
             accessKeyId: (0,_actions_core__WEBPACK_IMPORTED_MODULE_3__.getInput)("access-key-id"),
@@ -78891,10 +78892,10 @@ function main() {
             bucket: (0,_actions_core__WEBPACK_IMPORTED_MODULE_3__.getInput)("bucket"),
             endpoint: (0,_actions_core__WEBPACK_IMPORTED_MODULE_3__.getInput)("endpoint"),
         });
-        const files = yield globby__WEBPACK_IMPORTED_MODULE_2___default()("**/*", { cwd: folder });
-        console.log(files);
+        const files = yield globby__WEBPACK_IMPORTED_MODULE_2___default()((0,_actions_core__WEBPACK_IMPORTED_MODULE_3__.getMultilineInput)("patterns"), { cwd: folder });
+        console.log(files.map((file) => path__WEBPACK_IMPORTED_MODULE_0__.posix.join(prefix, file)));
         if (process.env.SKIP_PUT !== "true") {
-            yield Promise.all(files.map((file) => store.put(file, (0,path__WEBPACK_IMPORTED_MODULE_0__.join)(folder, file))));
+            yield Promise.all(files.map((file) => store.put(path__WEBPACK_IMPORTED_MODULE_0__.posix.join(prefix, file), (0,path__WEBPACK_IMPORTED_MODULE_0__.join)(folder, file))));
         }
         console.log("done");
     });

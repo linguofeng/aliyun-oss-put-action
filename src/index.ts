@@ -1,9 +1,10 @@
-import { join } from "path";
+import { join, posix } from "path";
 import OSS from "ali-oss";
 import globby from "globby";
-import { getInput } from "@actions/core";
+import { getInput, getMultilineInput } from "@actions/core";
 
 async function main() {
+  const prefix = getInput("prefix");
   const folder = getInput("folder");
 
   const store = new OSS({
@@ -13,12 +14,16 @@ async function main() {
     endpoint: getInput("endpoint"),
   });
 
-  const files = await globby("**/*", { cwd: folder });
+  const files = await globby(getMultilineInput("patterns"), { cwd: folder });
 
-  console.log(files);
+  console.log(files.map((file) => posix.join(prefix, file)));
 
   if (process.env.SKIP_PUT !== "true") {
-    await Promise.all(files.map((file) => store.put(file, join(folder, file))));
+    await Promise.all(
+      files.map((file) =>
+        store.put(posix.join(prefix, file), join(folder, file))
+      )
+    );
   }
 
   console.log("done");
