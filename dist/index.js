@@ -78891,8 +78891,9 @@ function main() {
             accessKeySecret: (0,_actions_core__WEBPACK_IMPORTED_MODULE_3__.getInput)("access-key-secret"),
             bucket: (0,_actions_core__WEBPACK_IMPORTED_MODULE_3__.getInput)("bucket"),
             endpoint: (0,_actions_core__WEBPACK_IMPORTED_MODULE_3__.getInput)("endpoint"),
+            timeout: "10m", // 10 分钟
         });
-        const files = yield globby__WEBPACK_IMPORTED_MODULE_2___default()((0,_actions_core__WEBPACK_IMPORTED_MODULE_3__.getMultilineInput)("patterns"), { cwd: folder });
+        const files = yield globby__WEBPACK_IMPORTED_MODULE_2___default()((0,_actions_core__WEBPACK_IMPORTED_MODULE_3__.getInput)("patterns").split(","), { cwd: folder });
         console.log(files.map((file) => path__WEBPACK_IMPORTED_MODULE_0__.posix.join(prefix, file)));
         if (process.env.SKIP_PUT !== "true") {
             yield Promise.all(files.map((file) => store.put(path__WEBPACK_IMPORTED_MODULE_0__.posix.join(prefix, file), (0,path__WEBPACK_IMPORTED_MODULE_0__.join)(folder, file))));
