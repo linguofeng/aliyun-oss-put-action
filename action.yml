@@ -31,4 +31,4 @@ inputs:
   patterns:
     description: 'patterns'
     required: false
-    default: '*/**'
+    default: '**/*'
