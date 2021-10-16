@@ -1,6 +1,7 @@
 import { join, posix } from "path";
 import OSS from "ali-oss";
 import globby from "globby";
+import pRetry from "p-retry";
 import { getInput } from "@actions/core";
 
 async function main() {
@@ -22,7 +23,9 @@ async function main() {
   if (process.env.SKIP_PUT !== "true") {
     await Promise.all(
       files.map((file) =>
-        store.put(posix.join(prefix, file), join(folder, file))
+        pRetry(() => store.put(posix.join(prefix, file), join(folder, file)), {
+          retries: 5,
+        })
       )
     );
   }
@@ -30,4 +33,7 @@ async function main() {
   console.log("done");
 }
 
-main();
+main().catch((error) => {
+  console.error(error);
+  process.exit(1);
+});

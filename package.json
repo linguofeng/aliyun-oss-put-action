@@ -12,7 +12,8 @@
     "@actions/core": "^1.5.0",
     "@actions/github": "^5.0.0",
     "ali-oss": "^6.16.0",
-    "globby": "^11.0.0"
+    "globby": "^11.0.0",
+    "p-retry": "^4.6.1"
   },
   "devDependencies": {
     "@types/ali-oss": "^6.0.11",

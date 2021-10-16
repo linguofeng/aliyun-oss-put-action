@@ -146,6 +146,11 @@
   resolved "https://registry.npmmirror.com/@types/node/download/@types/node-16.10.2.tgz#5764ca9aa94470adb4e1185fe2e9f19458992b2e"
   integrity sha1-V2TKmqlEcK204Rhf4unxlFiZKy4=
 
+"@types/retry@^0.12.0":
+  version "0.12.1"
+  resolved "https://registry.nlark.com/@types/retry/download/@types/retry-0.12.1.tgz#d8f1c0d0dc23afad6dc16a9e993a0865774b4065"
+  integrity sha1-2PHA0Nwjr61twWqemToIZXdLQGU=
+
 "@vercel/ncc@^0.31.1":
   version "0.31.1"
   resolved "https://registry.nlark.com/@vercel/ncc/download/@vercel/ncc-0.31.1.tgz#9346c7e59326f5eeac75c0286e47df94c2d6d8f7"
@@ -860,6 +865,14 @@ osx-release@^1.0.0:
   dependencies:
     minimist "^1.1.0"
 
+p-retry@^4.6.1:
+  version "4.6.1"
+  resolved "https://registry.nlark.com/p-retry/download/p-retry-4.6.1.tgz#8fcddd5cdf7a67a0911a9cf2ef0e5df7f602316c"
+  integrity sha1-j83dXN96Z6CRGpzy7w5d9/YCMWw=
+  dependencies:
+    "@types/retry" "^0.12.0"
+    retry "^0.13.1"
+
 pac-proxy-agent@^5.0.0:
   version "5.0.0"
   resolved "https://registry.nlark.com/pac-proxy-agent/download/pac-proxy-agent-5.0.0.tgz?cache=0&sync_timestamp=1626127218505&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fpac-proxy-agent%2Fdownload%2Fpac-proxy-agent-5.0.0.tgz#b718f76475a6a5415c2efbe256c1c971c84f635e"
@@ -992,6 +1005,11 @@ readable-stream@^2.3.6:
     safe-buffer "~5.1.1"
     string_decoder "~1.1.1"
     util-deprecate "~1.0.1"
+
+retry@^0.13.1:
+  version "0.13.1"
+  resolved "https://registry.nlark.com/retry/download/retry-0.13.1.tgz#185b1587acf67919d63b357349e03537b2484658"
+  integrity sha1-GFsVh6z2eRnWOzVzSeA1N7JIRlg=
 
 reusify@^1.0.4:
   version "1.0.4"
