@@ -13,7 +13,6 @@ async function main() {
     accessKeySecret: getInput("access-key-secret"),
     bucket: getInput("bucket"),
     endpoint: getInput("endpoint"),
-    timeout: "10m", // 10 分钟
   });
 
   const files = await globby(getInput("patterns").split(","), { cwd: folder });
