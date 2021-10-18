@@ -79270,7 +79270,6 @@ function main() {
             accessKeySecret: (0,_actions_core__WEBPACK_IMPORTED_MODULE_4__.getInput)("access-key-secret"),
             bucket: (0,_actions_core__WEBPACK_IMPORTED_MODULE_4__.getInput)("bucket"),
             endpoint: (0,_actions_core__WEBPACK_IMPORTED_MODULE_4__.getInput)("endpoint"),
-            timeout: "10m", // 10 分钟
         });
         const files = yield globby__WEBPACK_IMPORTED_MODULE_2___default()((0,_actions_core__WEBPACK_IMPORTED_MODULE_4__.getInput)("patterns").split(","), { cwd: folder });
         console.log(files.map((file) => path__WEBPACK_IMPORTED_MODULE_0__.posix.join(prefix, file)));
