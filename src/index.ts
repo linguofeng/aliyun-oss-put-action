@@ -22,9 +22,18 @@ async function main() {
   if (process.env.SKIP_PUT !== "true") {
     await Promise.all(
       files.map((file) =>
-        pRetry(() => store.put(posix.join(prefix, file), join(folder, file)), {
-          retries: 5,
-        })
+        pRetry(
+          () =>
+            store
+              .put(posix.join(prefix, file), join(folder, file))
+              .catch((err) => {
+                console.error(err);
+                throw new Error("Failed to fetch");
+              }),
+          {
+            retries: 5,
+          }
+        )
       )
     );
   }
