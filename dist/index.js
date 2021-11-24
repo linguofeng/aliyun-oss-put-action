@@ -80429,7 +80429,8 @@ function main() {
         console.log(files.map((file) => path__WEBPACK_IMPORTED_MODULE_0__.posix.join(prefix, file)));
         if (process.env.SKIP_PUT !== "true") {
             yield Promise.all(files.map((file) => p_retry__WEBPACK_IMPORTED_MODULE_3___default()(() => store
-                .put(path__WEBPACK_IMPORTED_MODULE_0__.posix.join(prefix, file), (0,path__WEBPACK_IMPORTED_MODULE_0__.join)(folder, file))
+                // .put(posix.join(prefix, file), join(folder, file))
+                .multipartUpload(path__WEBPACK_IMPORTED_MODULE_0__.posix.join(prefix, file), (0,path__WEBPACK_IMPORTED_MODULE_0__.join)(folder, file), {})
                 .catch((err) => {
                 console.error(err);
                 throw new Error("Failed to fetch");

@@ -25,7 +25,8 @@ async function main() {
         pRetry(
           () =>
             store
-              .put(posix.join(prefix, file), join(folder, file))
+              // .put(posix.join(prefix, file), join(folder, file))
+              .multipartUpload(posix.join(prefix, file), join(folder, file), {})
               .catch((err) => {
                 console.error(err);
                 throw new Error("Failed to fetch");
